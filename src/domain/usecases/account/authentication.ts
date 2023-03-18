@@ -1,14 +1,18 @@
-export interface AddAccount {
-    handle: (data: AddAccount.Request) => Promise<AddAccount.Result>
+export interface Authentication {
+    handle: (data: Authentication.Request) => Promise<Authentication.Result>
 }
 
-export namespace AddAccount {
+export namespace Authentication {
     export type Request = {
         email: string
         password: string
-        identification: string
+    }
+
+    export type Result = {
+        email: string
         name: string
         lastName: string
+        identification: string
         birthDate: Date
         tellphone: string
         cellphone: string
@@ -17,8 +21,6 @@ export namespace AddAccount {
         districtAddress: string
         cityAddress: string
         stateAddress: string
-        accessToken?: string
-        role?: string
+        accessToken: string
     }
-    export type Result = boolean
 }
