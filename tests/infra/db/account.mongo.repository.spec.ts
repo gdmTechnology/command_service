@@ -22,7 +22,9 @@ const addAccountParams = (): AddAccountRepository.Params => ({
     districtAddress: 'districtAddress',
     cityAddress: 'cityAddress',
     stateAddress: 'stateAddress',
-    accessToken: 'accessToken'
+    accessToken: 'accessToken',
+    tenant: 'tenant',
+    role: ''
 })
 
 const addAccountParamsWithRoleAdmin = (): AddAccountRepository.Params => ({
@@ -40,6 +42,7 @@ const addAccountParamsWithRoleAdmin = (): AddAccountRepository.Params => ({
     cityAddress: 'cityAddress',
     stateAddress: 'stateAddress',
     accessToken: 'accessToken',
+    tenant: 'tenant',
     role: 'admin'
 })
 
