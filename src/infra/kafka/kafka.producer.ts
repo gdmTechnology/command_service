@@ -20,6 +20,10 @@ export class KafkaProducer implements KafkaClient {
 export class KafkaSendMsg implements KafkaSendData {
     async send(message: KafkaSendData.Request): Promise<void> {
         const mesgStringyfied = JSON.stringify(message)
+        if (!producer) {
+            console.log('Kafka is not initialized.')
+            return
+        }
         await producer.send({
             topic: Topics.SEND_COMMAND,
             messages: [
