@@ -18,18 +18,18 @@ pipeline {
 			}
 			post {
 				always {
-				step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/clover.xml', lineCoverageTargets: '100, 95, 50'])
+				step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/cobertura-coverage.xml', lineCoverageTargets: '100, 95, 50'])
 				}
-			}
-		}
-		stage("killing old container") {
-			steps {
-				sh 'sudo docker system prune --all'
 			}
 		}
 		stage("build") {
 			steps {
 				sh 'docker build -t command-service .'
+			}
+		}
+		stage("killing old container") {
+			steps {
+				sh 'docker system prune --all'
 			}
 		}
 		stage("run") {
@@ -50,7 +50,7 @@ pipeline {
 					-e MONGO_USER=rem \
 					-p 3008:3008 \
 					--hostname command_service \
-                    --network middleware-network \
+                    --network rem_network \
 					--restart always \
 					--name command_service command_service
 				'''
