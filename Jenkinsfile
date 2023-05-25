@@ -52,7 +52,7 @@ pipeline {
 					--hostname command_service \
                     --network rem_network \
 					--restart always \
-					--name command_service command_service
+					--name command_service command-service
 				'''
 			}
 		}
