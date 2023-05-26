@@ -7,8 +7,11 @@
     "start:dev": "npx nodemon src/main/server.ts",
     "build": "rimraf ./build && tsc",
     "start": "npm run build && node build/index.js",
-    "test:staged": "npm test -- --findRelatedTests",
-    "test": "jest --detectOpenHandles --testEnvironment=node --runInBand  --forceExit --coverage --coverageDirectory=output/coverage/jest",
+    "test": "jest --detectOpenHandles --passWithNoTests --runInBand --no-cache",
+    "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
+    "test:ci": "npm test -- --forceExit --coverage --coverageDirectory=output/coverage/jest",
+    "test:staged": "npm test -- --forceExit",
     "prepare": "husky install"
   },
   "keywords": [],

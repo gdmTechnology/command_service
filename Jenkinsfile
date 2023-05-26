@@ -13,7 +13,7 @@ pipeline {
 			steps {
 				script {
 				sh 'npm i'
-				sh 'npm run test'
+				sh 'npm run test:ci'
 				}
 			}
 			post {
