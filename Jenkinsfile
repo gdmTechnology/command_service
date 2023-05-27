@@ -22,10 +22,12 @@ pipeline {
 				}
 			}
 		}
-		stage("Stop container and remove old image") {
+		stage("stop container") {
 			steps {
 				sh 'docker stop command_service || true'
 			}
+		}
+		stage("remove old image") {
 			steps {
 				sh 'docker rmi command-service || true'
 			}
@@ -35,7 +37,7 @@ pipeline {
 				sh 'docker build -t command-service .'
 			}
 		}
-		stage("remove unused containers") {
+		stage("remove unused containers and images") {
 			steps {
 				sh 'docker system prune --all'
 			}
