@@ -34,7 +34,7 @@ pipeline {
 		}
 		stage("remove unused containers and images") {
 			steps {
-				sh 'docker system prune --all'
+				sh 'docker system prune -af'
 			}
 		}
 		stage("build") {
