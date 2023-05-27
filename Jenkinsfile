@@ -24,12 +24,12 @@ pipeline {
 		}
 		stage("stop container") {
 			steps {
-				sh 'docker stop command_service'
+				sh 'docker stop command_service || true'
 			}
 		}
 		stage("remove old image") {
 			steps {
-				sh 'docker rmi command-service'
+				sh 'docker rmi command-service || true'
 			}
 		}
 		stage("build") {
