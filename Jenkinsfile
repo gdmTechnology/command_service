@@ -24,7 +24,7 @@ pipeline {
 		}
 		stage("Stop container and remove old image") {
 			steps {
-				sh 'docker stop command-service || true'
+				sh 'docker stop command_service || true'
 				sh 'docker rmi command-service || true'
 			}
 		}
