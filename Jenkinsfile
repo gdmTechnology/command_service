@@ -32,14 +32,14 @@ pipeline {
 				sh 'docker rmi command-service || true'
 			}
 		}
-		stage("build") {
-			steps {
-				sh 'docker build -t command-service .'
-			}
-		}
 		stage("remove unused containers and images") {
 			steps {
 				sh 'docker system prune --all'
+			}
+		}
+		stage("build") {
+			steps {
+				sh 'docker build -t command-service .'
 			}
 		}
 		stage("run") {
