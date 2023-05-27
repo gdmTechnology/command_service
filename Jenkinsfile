@@ -9,7 +9,7 @@ pipeline {
 				'''
 			}
 		}
-		stage('Tests') {
+		stage('tests') {
 			steps {
 				script {
 				sh 'npm i'
@@ -22,19 +22,19 @@ pipeline {
 				}
 			}
 		}
-		stage("killing old container") {
+		stage("remove current image") {
 			steps {
-				sh 'docker stop command-service'
-			}
-		}
-		stage("Remove unused images") {
-			steps {
-				sh 'docker system prune --all'
+				sh 'docker rmi command-service'
 			}
 		}
 		stage("build") {
 			steps {
 				sh 'docker build -t command-service .'
+			}
+		}
+		stage("remove unused containers") {
+			steps {
+				sh 'docker system prune --all'
 			}
 		}
 		stage("run") {
