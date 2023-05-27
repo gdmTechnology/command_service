@@ -22,14 +22,19 @@ pipeline {
 				}
 			}
 		}
+		stage("killing old container") {
+			steps {
+				sh 'docker stop command-service'
+			}
+		}
+		stage("Remove unused images") {
+			steps {
+				sh 'docker system prune --all'
+			}
+		}
 		stage("build") {
 			steps {
 				sh 'docker build -t command-service .'
-			}
-		}
-		stage("killing old container") {
-			steps {
-				sh 'docker system prune --all'
 			}
 		}
 		stage("run") {
