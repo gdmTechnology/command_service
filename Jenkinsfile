@@ -24,13 +24,8 @@ pipeline {
 		}
 		stage("remove current image") {
 			steps {
-				sh 'docker rmi command-service'
+				sh 'docker rmi command-service || true'
 			}
-			post { 
-				failure {
-					echo 'FAILURE!'
-				}
-    		}
 		}
 		stage("build") {
 			steps {
