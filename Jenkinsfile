@@ -26,6 +26,11 @@ pipeline {
 			steps {
 				sh 'docker rmi command-service'
 			}
+			post { 
+				failure {
+					echo 'FAILURE!'
+				}
+    		}
 		}
 		stage("build") {
 			steps {
