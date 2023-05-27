@@ -27,8 +27,8 @@ pipeline {
 				sh 'docker rmi command-service'
 			}
 			post { 
-				failure { 
-					echo ''
+				failure {
+					echo 'FAILURE!'
 				}
     		}
 		}
