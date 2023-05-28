@@ -6,7 +6,7 @@
     "lint": "npx eslint --fix .",
     "start:dev": "npx nodemon src/main/server.ts",
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/index.js",
+    "start": "npm run build && node dist/src/main/server.js",
     "test": "jest --detectOpenHandles --passWithNoTests --runInBand --no-cache",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:integration": "npm test -- --watch -c jest-integration-config.js",
