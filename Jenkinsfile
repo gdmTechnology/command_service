@@ -37,7 +37,12 @@ pipeline {
 				sh 'docker system prune -af'
 			}
 		}
-		stage("build") {
+		stage("build typescript") {
+			steps {
+				sh 'npm run build'
+			}
+		}
+		stage("build docker image") {
 			steps {
 				sh 'docker build -t command-service .'
 			}

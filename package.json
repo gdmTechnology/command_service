@@ -4,9 +4,9 @@
   "description": "",
   "scripts": {
     "lint": "npx eslint --fix .",
-    "start:dev": "npx nodemon src/main/server.ts",
     "build": "rimraf ./dist && tsc",
-    "start": "npm run build && node dist/src/main/server.js",
+    "start": "node dist/src/main/server.js",
+    "start:dev": "npx nodemon src/main/server.ts",
     "test": "jest --detectOpenHandles --passWithNoTests --runInBand --no-cache",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:integration": "npm test -- --watch -c jest-integration-config.js",
