@@ -9,11 +9,17 @@ pipeline {
 				'''
 			}
 		}
-		stage('tests') {
+		stage("install node_modules") {
 			steps {
 				script {
 				sh 'npm i'
-				sh 'npm run test:ci'
+				}
+			}
+		}
+		stage('tests') {
+			steps {
+				script {
+					sh 'npm run test:ci'
 				}
 			}
 			post {
